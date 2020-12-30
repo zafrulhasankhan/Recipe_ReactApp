@@ -44,7 +44,7 @@ const getRecipes =async()=>{
   const response = await fetch( `https://api.edamam.com/search?q=${query}&app_id=${App_id}&app_key=${App_key}`);
   const data = await response.json();
   setrecipes(data.hits);
-  //console.log(data.hits);
+  console.log(data.hits);
   }
 const classes = useStyles();
 
@@ -64,7 +64,7 @@ return (
         </Grid>
       </CardActions>
       
-    
+      {(recipes?.length)?(
         <div className="container">
            <div className="row">
            {recipes?.map(recipe=>(
@@ -94,7 +94,17 @@ return (
      </div>
   
    </div>
-        
+      ):(
+
+        <CardActions>
+        <Grid container justify="center">
+        <div className="playercard">
+           <h5>Not Found...</h5>
+        </div>
+        </Grid>
+        </CardActions>
+
+      )}
       
       
       
